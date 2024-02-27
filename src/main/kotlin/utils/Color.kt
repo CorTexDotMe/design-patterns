@@ -18,6 +18,14 @@ fun colorAsText(color: Color): String {
     return colorAsAnsiSymbol[color] + colorText(color) + endOfColorAnsiSymbol
 }
 
+fun printInRed(text: String) {
+    println( colorAsAnsiSymbol[Color.RED] + text + endOfColorAnsiSymbol)
+}
+
+fun printInGreen(text: String) {
+    println( colorAsAnsiSymbol[Color.GREEN] + text + endOfColorAnsiSymbol)
+}
+
 private fun colorText(color: Color): String {
     return when (color) {
         Color.RED -> "Red"

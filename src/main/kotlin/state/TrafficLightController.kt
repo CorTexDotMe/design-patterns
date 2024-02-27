@@ -6,10 +6,11 @@ import kotlinx.coroutines.*
 import utils.colorAsText
 
 class TrafficLightController(initState: TrafficLightState) {
-    private var currentState: TrafficLightState = initState
-    private var working = false
     // Coroutine scope is used to start TrafficLight asynchronously
     private var scope = CoroutineScope(Dispatchers.Default)
+    private var working = false
+
+    private var currentState: TrafficLightState = initState
 
     fun start() {
         // Start asynchronous coroutine with scope
