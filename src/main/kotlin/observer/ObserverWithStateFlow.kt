@@ -1,22 +1,22 @@
 package observer
 
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
 import utils.printInGreen
 import utils.printInRed
 
 
-class Sensor {
+class StateFlowSensor {
+    val temperature: MutableStateFlow<Int> = MutableStateFlow(5)
+    var working = true
+
     // Coroutine scope is used to start Sensor asynchronously
     private var scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
-    private var working = true
-
-    var temperature: MutableStateFlow<Int> = MutableStateFlow(5)
 
     /**
-     *  To demonstrate the idea, Sensor after starting will print its temperature every 2 seconds
-     *  After printing it will cool off, decreasing temperature by 1
-     *  When temperature is below -5, it will heat up, making temperature 5
+     *  To demonstrate the idea, Sensor prints its temperature every 2 seconds
+     *  Every 2 seconds it cools off, decreasing temperature by 1
+     *  When temperature is below -5, it heats up, making temperature 5
      *
      */
     fun start() {
@@ -34,17 +34,13 @@ class Sensor {
             }
         }
     }
-
-    fun stop() {
-        working = false
-    }
 }
 
-class Monitor(private val threshold: Int) {
-    // Coroutine scope is used to start Sensor asynchronously
+class StateFlowMonitor(private val threshold: Int) {
+    // Coroutine scope is used to start Monitor asynchronously
     private var scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
-    fun collectOnTemperature(temperature: MutableStateFlow<Int>) {
+    fun collectFrom(temperature: MutableStateFlow<Int>) {
         scope.launch {
             temperature.collect { value ->
                 if (value < threshold)
@@ -59,14 +55,14 @@ class Monitor(private val threshold: Int) {
 
 
 fun main() {
-    val sensor = Sensor()
-    val monitor = Monitor(0)
-    monitor.collectOnTemperature(sensor.temperature)
+    println("Demonstration of StateFlow<Type> implementation:\n")
+    val sensor = StateFlowSensor()
+    val monitor = StateFlowMonitor(0)
+    monitor.collectFrom(sensor.temperature)
 
-//    val hotterMonitor = Monitor(2)
-//    hotterMonitor.collectOnTemperature(sensor.temperature)
+    val hotterMonitor = StateFlowMonitor(2)
+    hotterMonitor.collectFrom(sensor.temperature)
 
     sensor.start()
     readln()
-    sensor.stop()
 }
