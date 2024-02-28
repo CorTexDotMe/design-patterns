@@ -2,7 +2,10 @@ package state
 
 import RedColorState
 import TrafficLightState
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import utils.colorAsText
 
 class TrafficLightController(initState: TrafficLightState) {
