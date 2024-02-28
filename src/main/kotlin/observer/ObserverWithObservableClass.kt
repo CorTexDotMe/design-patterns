@@ -3,6 +3,7 @@ package observer
 import kotlinx.coroutines.*
 import utils.printInGreen
 import utils.printInRed
+import kotlin.properties.Delegates
 
 class Observable<Type>(initialValue: Type) {
     private var index = 0
@@ -16,6 +17,22 @@ class Observable<Type>(initialValue: Type) {
                 callback.invoke(newValue)
             }
         }
+
+    /**
+     * Alternatively to the setter implementation above,
+     * there is a way to achieve the same logic with Delegate.observable(...)
+     *
+     * Delegate is a class from Kotlin standard library that has two functions.
+     * One of them is the observable(), that takes two parameters:
+     * initial value for a property and a function
+     * that takes property, old value and new value as parameters
+     * and will be called if property changes.
+     */
+//    var value: Type by Delegates.observable(initialValue) { _, _, newValue ->
+//        observers.values.forEach { callback ->
+//            callback.invoke(newValue)
+//        }
+//    }
 
     fun subscribe(callback: (Type) -> Unit): Int {
         observers[index] = callback
