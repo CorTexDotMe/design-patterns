@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Workspace/.Projects/java-kotlin/design-patterns/src/main/kotlin/state/TrafficLightState.kt</OriginalElement>
+  <nodes>
+    <node x="137.04211956521738" y="-59.02898550724635">YellowColorState</node>
+    <node x="-212.3695652173913" y="67.67391304347825">state.TrafficLightController</node>
+    <node x="141.28125" y="-284.32291666666663">RedColorState</node>
+    <node x="141.28125" y="172.83016304347825">GreenColorState</node>
+    <node x="-212.3695652173913" y="-90.52898550724635">TrafficLightState</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="GreenColorState" target="TrafficLightState" relationship="REALIZATION">
+      <point x="-122.00025" y="-2.500000000509317E-4" />
+      <point x="85.0" y="211.8299130434782" />
+      <point x="85.0" y="-51.529" />
+      <point x="121.99956521739131" y="-1.4492753656725199E-5" />
+    </edge>
+    <edge source="state.TrafficLightController" target="TrafficLightState" relationship="TO_ONE">
+      <point x="14.0" y="-38.5" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="RedColorState" target="TrafficLightState" relationship="REALIZATION">
+      <point x="-122.00025" y="-8.333333337873228E-5" />
+      <point x="85.0" y="-245.323" />
+      <point x="85.0" y="-51.529" />
+      <point x="121.99956521739131" y="-1.4492753656725199E-5" />
+    </edge>
+    <edge source="YellowColorState" target="TrafficLightState" relationship="REALIZATION">
+      <point x="-122.00011956521737" y="-1.4492753653172485E-5" />
+      <point x="85.0" y="-20.029" />
+      <point x="85.0" y="-51.529" />
+      <point x="121.99956521739131" y="-1.4492753656725199E-5" />
+    </edge>
+    <edge source="GreenColorState" target="YellowColorState" relationship="CREATE">
+      <point x="54.65353260869563" y="-17.808423913043498" />
+      <point x="331.8978967391304" y="194.02173913043475" />
+      <point x="331.8978967391304" y="231.32608695652164" />
+      <point x="321.389695652174" y="231.32608695652164" />
+      <point x="321.389695652174" y="-58.858695652173935" />
+      <point x="309.4565217391304" y="-58.858695652173935" />
+      <point x="50.414402173913004" y="34.311594202898476" />
+    </edge>
+    <edge source="YellowColorState" target="GreenColorState" relationship="CREATE">
+      <point x="-14.020380434782624" y="41.09420289855066" />
+      <point x="245.02173913043475" y="96.94769021739128" />
+      <point x="245.02173913043475" y="194.02173913043475" />
+      <point x="-20.802989130434867" y="-17.808423913043498" />
+    </edge>
+    <edge source="RedColorState" target="YellowColorState" relationship="CREATE">
+      <point x="60.588315217391255" y="39.17074275362313" />
+      <point x="323.86956521739125" y="-132.0" />
+      <point x="324.71739130434776" y="-132.0" />
+      <point x="65.67527173913038" y="-36.90579710144934" />
+    </edge>
+    <edge source="YellowColorState" target="RedColorState" relationship="CREATE">
+      <point x="-15.000119565217403" y="-39.0" />
+      <point x="-19.239250000000027" y="39.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.1794871794871795" showDependencies="true" x="97.5" y="27.0" />
+  <SelectedNodes>
+    <node>state.TrafficLightController</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
