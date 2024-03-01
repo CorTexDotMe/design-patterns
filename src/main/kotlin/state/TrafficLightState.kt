@@ -13,6 +13,12 @@ class RedColorState : TrafficLightState {
     }
 }
 
+/**
+ * Yellow color State takes TrafficLightState as constructor parameter
+ * to determine which traffic light color was before
+ * and which one should go next
+ *
+*/
 class YellowColorState(private val from: TrafficLightState) : TrafficLightState {
     override val color: Color = Color.YELLOW
 

@@ -9,11 +9,11 @@ private val colorAsAnsiSymbol = mapOf(
 )
 private val endOfColorAnsiSymbol = "\u001B[0m"
 
-
 fun textInColor(text: String, color: Color): String {
     return colorAsAnsiSymbol[color] + text + endOfColorAnsiSymbol
 }
 
+// Return string of color name that is colored when printed to console
 fun colorAsText(color: Color): String {
     return colorAsAnsiSymbol[color] + colorText(color) + endOfColorAnsiSymbol
 }
