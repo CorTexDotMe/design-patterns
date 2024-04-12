@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import utils.printInGreen
 import utils.printInRed
 import kotlin.properties.Delegates
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * This is a custom implementation of an Observer pattern
@@ -80,6 +81,7 @@ class ObservableSensor {
     val temperature: Observable<Int> = Observable(5)
     var working: Boolean = false
 
+    private val DELAY_TIME = 2.seconds
     // Coroutine scope is used to start Sensor asynchronously
     private var scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
@@ -103,7 +105,7 @@ class ObservableSensor {
                     println("Sensor: current temperature: ${temperature.value}")
                 }
 
-                delay(2000)
+                delay(DELAY_TIME)
             }
         }
     }
@@ -127,9 +129,8 @@ class ObserverMonitor(private val threshold: Int) {
         temperature.subscribe { value ->
             if (value < threshold)
                 printInRed("Monitor: WARNING! Temperature is below $threshold!!!")
-            else {
+            else
                 printInGreen("Monitor: Temperature is fine")
-            }
         }
     }
 }

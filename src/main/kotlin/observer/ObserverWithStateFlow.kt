@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import utils.printInGreen
 import utils.printInRed
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * Temperature sensor
@@ -25,6 +26,7 @@ class StateFlowSensor {
     val temperature: MutableStateFlow<Int> = MutableStateFlow(5)
     var working = true
 
+    private val DELAY_TIME = 2.seconds
     // Coroutine scope is used to start Sensor asynchronously
     private var scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
@@ -45,7 +47,7 @@ class StateFlowSensor {
                 if (temperature.value == -5)
                     temperature.emit(5) // make hotter
 
-                delay(2000)
+                delay(DELAY_TIME)
             }
         }
     }
@@ -76,7 +78,7 @@ class StateFlowMonitor(private val threshold: Int) {
         scope.launch {
             temperature.collect { value ->
                 if (value < threshold)
-                    printInRed("Monitor: WARNING! Temperature is below zero!!!")
+                    printInRed("Monitor: WARNING! Temperature is below $threshold!!!")
                 else {
                     printInGreen("Monitor: Temperature is fine")
                 }
