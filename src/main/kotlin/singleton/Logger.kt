@@ -9,7 +9,7 @@ import java.time.LocalDateTime
  *
  * To achieve thread-safety additional use of volatile and synchronized is required
  */
-class Logger {
+class Logger private constructor() {
     companion object {
         // Use volatile annotation to ensure that changes are immediately visible to all threads
         @Volatile
