@@ -3,9 +3,10 @@ package singleton
 import java.time.LocalDateTime
 
 /**
- * Singleton can be implemented with companion object keywords
- * This approach requires a class that will exist as singleton
- * Companion object approach is usually used to add same behavior as static in java
+ * Singleton can be implemented with companion object keywords.
+ * This approach requires a class that will exist as singleton.
+ * Companion object approach is usually used to add same behavior as static in java.
+ *
  * To achieve thread-safety additional use of volatile and synchronized is required
  */
 class Logger {

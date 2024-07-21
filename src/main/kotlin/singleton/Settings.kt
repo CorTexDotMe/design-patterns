@@ -1,9 +1,11 @@
 package singleton
 
 /**
- * Singleton can be implemented with object keyword
- * This approach doesn't need separate class
- * This approach is thread-safe and lazy initialized, when singleton is accessed for the first time
+ * Singleton can be implemented with object keyword.
+ * This approach doesn't need separate class.
+ *
+ * This approach is thread-safe and lazy initialized,
+ * when singleton is accessed for the first time
  */
 object Settings {
     private val settings = HashMap<String, String>()
